@@ -9,7 +9,7 @@
   import Title from "$lib/components/Title.svelte";
   import { accountSchema, extractYupErrors } from "$lib/database/schema";
   import { axios } from "$lib/others/utils";
-import { onMount } from "svelte";
+  import { onMount } from "svelte";
 
   onMount(() => {
     if ($page.params.mode == 'add') el.focus()
@@ -73,6 +73,6 @@ import { onMount } from "svelte";
 </Grid>
 
 <Flex>
-  <Button submit={true} on:click={submit} name="Save" type="primary" />
-  <Button on:click={()=>history.go(-1)} name="Discard" />
+  <Button icon="save" submit={true} on:click={submit} name="Save" type="primary" />
+  <Button icon="discard" on:click={()=>history.go(-1)} name="Discard" />
 </Flex>

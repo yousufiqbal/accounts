@@ -11,7 +11,7 @@
 <div class="title">
   {#if back}
   <button on:click={()=>history.go(-1)}>
-    <Icon size="2rem" name="back" />
+    <Icon size="2rem" icon="back" />
   </button>
   {/if}
   <div in:fly={{x: -20, duration: 200}}>
