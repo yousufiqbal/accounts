@@ -10,14 +10,14 @@
   $: totalPages = Math.ceil(totalRows/limit)
   $: prevPage = page == 1 ? 1 : page - 1
   $: nextPage = page < totalPages ? page + 1 : totalPages
-  $: queryParams = otherParams && getOtherQueryParams($pg, 'page')
+  $: queryParams = otherParams && getOtherQueryParams($pg, 'page') || ''
 </script>
 
 {#if totalPages >= 2}
 <div class="pagination {$$props.class}">
-  <a href="?page={prevPage}{queryParams}">Prev</a>
+  <a sveltekit:prefetch href="?page={prevPage}{queryParams}">Prev</a>
   <div class="status">{page} of {totalPages}</div>
-  <a href="?page={nextPage}{queryParams}">Next</a>
+  <a sveltekit:prefetch href="?page={nextPage}{queryParams}">Next</a>
 </div>
 {/if}
 
@@ -37,5 +37,11 @@
   .status {
     text-align: center;
     width: 90px;
+  }
+  a {
+    color: blue;
+  }
+  a:hover {
+    color: red;
   }
 </style>
