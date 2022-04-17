@@ -1,10 +1,14 @@
 <script>
-  export let name
+  export let name, href = null
   /** @type {'general'|'primary'} */
   export let type = 'general'
 </script>
 
-<button class="button {type}">{name}</button>
+{#if href}
+  <a {href} class="button {type}">{name}</a>
+{:else}
+  <button on:click class="button {type}">{name}</button>
+{/if}
 
 <style>
   .button {
