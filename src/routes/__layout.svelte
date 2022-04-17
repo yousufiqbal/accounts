@@ -2,6 +2,9 @@
   import '$lib/styles/variables.css'
   import '$lib/styles/global.css'
   import Navigation from '../lib/components/Navigation.svelte'
+  import Drawer from '$lib/components/Drawer.svelte';
+import Layout from '$lib/components/Layout.svelte';
+import Menu from '$lib/components/Menu.svelte';
 
   const links = [
     { name: 'Accounts', href: 'accounts' },
@@ -11,6 +14,11 @@
   ]
 </script>
 
-<Navigation baseUrl="/" {links} />
+<Drawer>
+  <Menu />
+</Drawer>
 
-<slot></slot>
+<Layout>
+  <!-- <Navigation baseUrl="/" {links} /> -->
+  <slot></slot>
+</Layout>

@@ -12,4 +12,4 @@
 </script>
 
 <Breadcrumb {crumbs} />
-<Title title="{account.name} - Account" />
+<Title back title="{account.name} - Account" />

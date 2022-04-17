@@ -6,7 +6,7 @@
   .table {
     border-collapse: collapse;
     white-space: nowrap;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
   .table th, .table td {
     border: var(--border);

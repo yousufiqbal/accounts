@@ -37,7 +37,7 @@ import { onMount } from "svelte";
   
   const editAccount = async () => {
     try {
-      const response = await axios.put('/api/accounts', account)
+      const response = await axios.put('/api/accounts?account_id=' + $page.url.searchParams.get('account_id'), account)
       alert(response.data.message)
       goto('/accounts')
     } catch (error) {
@@ -66,7 +66,7 @@ import { onMount } from "svelte";
 
 <Breadcrumb {crumbs} />
 
-<Title title="{$page.params.mode} Account" />
+<Title back title="{$page.params.mode} Account" />
 
 <Grid>
   <Field bind:el {touched} bind:value={account.name} label="Account Name" name="name" error={errors['name']} />

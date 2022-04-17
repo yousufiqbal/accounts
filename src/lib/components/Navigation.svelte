@@ -1,12 +1,11 @@
 <script>
   export let links = []
-  export let baseUrl = '/'
 </script>
 
 {#if links.length != 0}
 <div class="navigation">
   {#each links as link}
-  <a href="{baseUrl}{link.href}">{link.name}</a>
+  <a href="{link.href}">{link.name}</a>
   {/each}
 </div>
 {/if}

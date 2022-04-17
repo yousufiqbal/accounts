@@ -1,15 +1,23 @@
 <script>
   import { capitalize } from "$lib/others/utils";
+  import Icon from "./Icon.svelte";
+  import { fly } from 'svelte/transition'
 
   /** @type {string} */
   export let title, below = '', description = title
+  export let back = false
 </script>
 
 <div class="title">
-  <h1>{title}</h1>
-  {#if below}
-  <div>{below}</div>
+  {#if back}
+  <button on:click={()=>history.go(-1)}>
+    <Icon size="2rem" name="back" />
+  </button>
   {/if}
+  <div in:fly={{x: -20, duration: 200}}>
+    <h1>{title}</h1>
+    {#if below}<div>{below}</div>{/if}
+  </div>
 </div>
 
 <svelte:head>
@@ -18,7 +26,14 @@
 </svelte:head>
 
 <style>
+  button {
+    display: flex;
+    /* color: blue; */
+  }
   .title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     /* outline: 1px solid red; */
     margin-bottom: 20px;
   }
