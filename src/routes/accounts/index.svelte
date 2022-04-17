@@ -12,8 +12,8 @@
 <Title title="Accounts" />
 
 <Flex>
-  <Button href="/accounts/add-account" type="primary" name="+ Add Account" />
-  <Button name="Search Accounts" href="/accounts/search" />
+  <Button icon="add" href="/accounts/add-account" type="primary" name="Add Account" />
+  <Button icon="search" name="Search Accounts" href="/accounts/search" />
   <Filter {original} bind:results={accounts} />
 </Flex>
 

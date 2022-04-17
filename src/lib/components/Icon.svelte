@@ -1,5 +1,7 @@
 <script>
-  export let icon = 'home', size = '1rem', fill = 'currentColor'
+  export let icon = 'home',
+    size = '1rem',
+    fill = 'currentColor'
 </script>
 
 <svg on:click viewBox="0 0 24 24" {fill} width={size} height={size}>
@@ -17,10 +19,22 @@
   {/if}
 
   {#if icon == 'discard'}
-
     <path fill="none" d="M0 0h24v24H0z"/><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/>
-  
   {/if}
+
+  {#if icon == 'search'}
+    <path fill="none" d="M0 0h24v24H0z" />
+    <path d="M11 2c4.968 0 9 4.032 9 9s-4.032 9-9 9-9-4.032-9-9 4.032-9 9-9zm0 16c3.867 0 7-3.133 7-7 0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7zm8.485.071l2.829 2.828-1.415 1.415-2.828-2.829 1.414-1.414z" />
+  {/if}
+
+  {#if icon == 'filter'}
+    <path fill="none" d="M0 0H24V24H0z"/><path d="M21 4v2h-1l-5 7.5V22H9v-8.5L4 6H3V4h18zM6.404 6L11 12.894V20h2v-7.106L17.596 6H6.404z"/>
+  {/if}
+
+  {#if icon == 'add'}
+    <path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"/>
+  {/if}
+
 </svg>
 
 <style>
