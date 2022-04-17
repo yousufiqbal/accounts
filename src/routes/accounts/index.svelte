@@ -1,4 +1,6 @@
 <script>
+  import Pagination from "$lib/components/Pagination.svelte";
+import Table from "$lib/components/Table.svelte";
   import Button from "../../lib/components/Button.svelte";
   import Flex from "../../lib/components/Flex.svelte";
   import Title from "../../lib/components/Title.svelte";
@@ -13,7 +15,7 @@
   <Button name="Search Accounts" />
 </Flex>
 
-<table class="table">
+<Table>
   <tr>
     <th>Sr.</th>
     <th class="main">Account Name</th>
@@ -77,103 +79,6 @@
     <td>90000</td>
     <td>21 May, 2012 - 05:23 pm</td>
   </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>Yousuf Iqbal</td>
-    <td>50000</td>
-    <td>90000</td>
-    <td>21 May, 2012 - 05:23 pm</td>
-  </tr>
-</table>
+</Table>
 
+<Pagination totalRows={200} otherParams={true} />
