@@ -2,11 +2,12 @@
   export let label, name, id = name, value = undefined
   export let touched = false, error = 'An error occured.'
   export let placeholder = null, maxlength = null, minlength = null
+  export let el = null
 </script>
 
 <div class="field">
   <label for="{name}">{label}</label>
-  <input on:blur={()=>touched=true} bind:value {name} {id} {placeholder} {maxlength} {minlength} >
+  <input bind:this={el} on:blur={()=>touched=true} bind:value {name} {id} {placeholder} {maxlength} {minlength} >
   {#if touched && error}
   <span>{error}</span>
   {/if}
@@ -37,5 +38,9 @@
   }
   input {
     padding: 13px 17px 7px 15px;
+    border: var(--border);
+  }
+  input:focus {
+    border-color: blue;
   }
 </style>

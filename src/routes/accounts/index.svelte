@@ -1,9 +1,7 @@
 <script>
   import Filter from "$lib/components/Filter.svelte";
   import Pagination from "$lib/components/Pagination.svelte";
-  import Table from "$lib/components/Table.svelte";
-  import { beautifyDateTime } from "$lib/others/utils";
-import Accounts from "$lib/tables/Accounts.svelte";
+  import Accounts from "$lib/tables/Accounts.svelte";
   import Button from "../../lib/components/Button.svelte";
   import Flex from "../../lib/components/Flex.svelte";
   import Title from "../../lib/components/Title.svelte";

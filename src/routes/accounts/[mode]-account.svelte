@@ -9,14 +9,21 @@
   import Title from "$lib/components/Title.svelte";
   import { accountSchema, extractYupErrors } from "$lib/database/schema";
   import { axios } from "$lib/others/utils";
+import { onMount } from "svelte";
 
-  let account = {}
+  onMount(() => {
+    if ($page.params.mode == 'add') el.focus()
+  })
+
+  export let account = {}
   let touched = false, errors = {}
   
   const crumbs = [
     { name: 'Accounts', href: '/accounts' },
     { name:  $page.params.mode + ' Account', href: '/accounts/' + $page.params.mode + '-account' }
   ]
+
+  let el
 
   const addAccount = async () => {
     try {
@@ -29,7 +36,13 @@
   }
   
   const editAccount = async () => {
-
+    try {
+      const response = await axios.put('/api/accounts', account)
+      alert(response.data.message)
+      goto('/accounts')
+    } catch (error) {
+      alert(error.data.message)
+    }
   }
 
   const submit = async () => {
@@ -56,7 +69,7 @@
 <Title title="{$page.params.mode} Account" />
 
 <Grid>
-  <Field {touched} bind:value={account.name} label="Account Name" name="name" error={errors['name']} />
+  <Field bind:el {touched} bind:value={account.name} label="Account Name" name="name" error={errors['name']} />
 </Grid>
 
 <Flex>
