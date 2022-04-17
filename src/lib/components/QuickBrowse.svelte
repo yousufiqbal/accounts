@@ -1,17 +1,26 @@
 <script>
+  import Icon from "./Icon.svelte";
+  import { slide } from 'svelte/transition'
 
-import Icon from "./Icon.svelte";
+  export let show = false
+  let input
 
+  const handleShortcut = e => {
+    if (e.key == 'Escape') {
+      input.blur()
+    }
+  }
 </script>
 
 <div class="quick-browse">
 
   <div class="search" style="display: flex">
     <Icon icon="plane" size="1.3rem" />
-    <input placeholder="Quick Browse">
+    <input bind:this={input} on:focus={()=>show=true} on:blur={()=>show=false} placeholder="Quick Browse">
   </div>
 
-  <div class="status-suggestions">
+  {#if show}
+  <div transition:slide|local={{duration: 100}} class="status-suggestions">
     <div class="status">Status</div>
     <div class="suggestions">
       <a href="/accounts/bank-al-habib">Bank Al Habib</a>
@@ -20,8 +29,11 @@ import Icon from "./Icon.svelte";
       <a href="/accounts/habib-metro">Habib Metro</a>
     </div>
   </div>
+  {/if}
 
 </div>
+
+<svelte:window on:keyup={handleShortcut} />
 
 <style>
   .quick-browse {
@@ -35,6 +47,7 @@ import Icon from "./Icon.svelte";
     padding-left: 10px;
   }
   input {
+    flex: 1;
     border: none;
     padding: var(--padding);
     padding-left: 0;
@@ -63,5 +76,8 @@ import Icon from "./Icon.svelte";
   .suggestions a {
     padding: var(--padding);
     border-bottom: var(--border);
+  }
+  a:hover {
+    color: red;
   }
 </style>
