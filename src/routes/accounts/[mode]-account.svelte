@@ -60,6 +60,6 @@
 </Grid>
 
 <Flex>
-  <Button on:click={submit} name="Save" type="primary" />
+  <Button submit={true} on:click={submit} name="Save" type="primary" />
   <Button on:click={()=>history.go(-1)} name="Discard" />
 </Flex>

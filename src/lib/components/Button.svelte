@@ -2,12 +2,13 @@
   export let name, href = null
   /** @type {'general'|'primary'} */
   export let type = 'general'
+  export let submit = false
 </script>
 
 {#if href}
   <a {href} class="button {type}">{name}</a>
 {:else}
-  <button on:click class="button {type}">{name}</button>
+  <button type="{ submit ? 'submit' : ''}" on:click class="button {type}">{name}</button>
 {/if}
 
 <style>
