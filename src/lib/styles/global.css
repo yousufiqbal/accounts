@@ -1,0 +1,57 @@
+/* Universal */
+
+* {
+  margin: 0; padding: 0;
+  font-size: 15px;
+  font-weight: normal;
+  font-family: KoHo;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+*:focus {
+  outline: none;
+}
+
+/* Button and Anchor */
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Utility */
+
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+
+.mb40 {
+  margin-bottom: 40px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+/* Clarity */
+
+body {
+  padding: 20px;
+}
