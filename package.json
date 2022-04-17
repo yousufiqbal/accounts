@@ -17,5 +17,12 @@
     "svelte": "^3.44.0",
     "svelte-preprocess": "^4.10.6"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "dayjs": "^1.11.1",
+    "knex": "^1.0.7",
+    "mysql2": "^2.3.3",
+    "redaxios": "^0.4.1",
+    "yup": "^0.32.11"
+  }
 }

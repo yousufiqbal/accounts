@@ -1,4 +1,6 @@
 <script>
+  import { capitalize } from "$lib/others/utils";
+
   /** @type {string} */
   export let title, below = '', description = title
 </script>
@@ -11,7 +13,7 @@
 </div>
 
 <svelte:head>
-  <title>Accounts - {title}</title>
+  <title>Accounts - {capitalize(title)}</title>
   <meta name="description" content="{description}">
 </svelte:head>
 
@@ -21,6 +23,7 @@
     margin-bottom: 20px;
   }
   h1 {
+    text-transform: capitalize;
     font-weight: bold;
     font-size: 1.3rem;
     letter-spacing: 0.5px;
