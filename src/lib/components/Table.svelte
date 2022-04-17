@@ -8,17 +8,23 @@
     white-space: nowrap;
     margin-bottom: 40px;
   }
-  th, td {
+  .table th, .table td {
     border: var(--border);
     padding: var(--padding);
   }
-  th {
+  .table th {
     font-weight: bold;
   }
-  tr:hover {
+  .table tr:hover {
     background-color: rgb(225, 245, 255);
   }
   .table .main {
     width: 100%;
+  }
+  .table a {
+    color: blue;
+  }
+  .table a:hover {
+    color: red;
   }
 </style>

@@ -15,9 +15,9 @@
 
 {#if totalPages >= 2}
 <div class="pagination {$$props.class}">
-  <a sveltekit:prefetch href="?page={prevPage}{queryParams}">Prev</a>
+  <a href="?page={prevPage}{queryParams}">Prev</a>
   <div class="status">{page} of {totalPages}</div>
-  <a sveltekit:prefetch href="?page={nextPage}{queryParams}">Next</a>
+  <a href="?page={nextPage}{queryParams}">Next</a>
 </div>
 {/if}
 

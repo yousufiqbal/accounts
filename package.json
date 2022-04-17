@@ -21,6 +21,7 @@
   "dependencies": {
     "dayjs": "^1.11.1",
     "knex": "^1.0.7",
+    "lodash-es": "^4.17.21",
     "mysql2": "^2.3.3",
     "redaxios": "^0.4.1",
     "yup": "^0.32.11"
