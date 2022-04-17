@@ -34,7 +34,6 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    /* outline: 1px solid red; */
     margin-bottom: 20px;
   }
   h1 {

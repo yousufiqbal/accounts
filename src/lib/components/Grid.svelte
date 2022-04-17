@@ -1,8 +1,8 @@
 <script>
-  export let columns = '1fr', gap = '20px'
+  export let columns = '1fr', gap = '20px', size = '600px'
 </script>
 
-<div class="grid" style:grid-template-columns={columns} style:gap >
+<div class="grid" style:max-width={size} style:grid-template-columns={columns} style:gap >
   <slot></slot>
 </div>
 
