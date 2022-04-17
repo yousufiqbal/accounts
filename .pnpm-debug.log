@@ -1,0 +1,47 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "accounts",
+      "version": "0.0.1",
+      "scripts": {
+        "dev": "svelte-kit dev",
+        "build": "svelte-kit build",
+        "package": "svelte-kit package",
+        "preview": "svelte-kit preview",
+        "prepare": "svelte-kit sync",
+        "lint": "eslint --ignore-path .gitignore ."
+      },
+      "devDependencies": {
+        "@sveltejs/adapter-auto": "next",
+        "@sveltejs/kit": "next",
+        "eslint": "^7.32.0",
+        "eslint-plugin-svelte3": "^3.2.1",
+        "svelte": "^3.44.0"
+      },
+      "type": "module"
+    },
+    "prefix": "C:\\Users\\Capacitor\\Desktop\\Projects\\accounts"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "C:\\Users\\Capacitor\\.pnpm-store\\v3",
+    "virtualStoreDir": "C:\\Users\\Capacitor\\Desktop\\Projects\\accounts\\node_modules\\.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "C:\\Users\\Capacitor\\Desktop\\Projects\\accounts",
+    "stage": "resolution_started"
+  },
+  "4 error pnpm": {
+    "code": "ERR_PNPM_SPEC_NOT_SUPPORTED_BY_ANY_RESOLVER",
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "svelte=preprocess isn't supported by any available resolver.",
+      "code": "ERR_PNPM_SPEC_NOT_SUPPORTED_BY_ANY_RESOLVER",
+      "stack": "pnpm: svelte=preprocess isn't supported by any available resolver.\n    at Object.resolve (C:\\Users\\Capacitor\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:85424:17)\n    at async run (C:\\Users\\Capacitor\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:71358:23)"
+    }
+  }
+}
