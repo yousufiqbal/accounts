@@ -12,6 +12,6 @@
   .flex {
     /* outline: 1px solid red; */
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 </style>

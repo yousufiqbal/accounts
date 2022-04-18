@@ -1,7 +1,8 @@
 <script>
   import Button from "./Button.svelte";
   import Flex from "./Flex.svelte";
-  import Icon from "./Icon.svelte";
+import Icon from "./Icon.svelte";
+import Validation from "./Validation.svelte";
 
   export let accounts = []
 
@@ -20,12 +21,13 @@
 
 <Flex>
   <Button on:click={addLine} name="Add Line" icon="add" />
+  <Validation text="Balanced Amounts" valid={true} />
+  <Validation text="Unique Accounts" valid={true} />
 </Flex>
 
 <table class="lines">
   <tr>
     <th>Sr.</th>
-    <th><Icon icon="search" /></th>
     <th>Account</th>
     <th>ID</th>
     <th>Debit</th>
@@ -34,27 +36,33 @@
   </tr>
   {#each lines as line, index}
   <tr>
+
     <td>{index+1}</td>
-    <td><input size="3"></td>
+
     <td>
-      <select bind:value={lines[index].account_id} name="" id="">
+      <select bind:value={line.account_id} name="" id="">
         <option value="" selected disabled hidden>Choose Account</option>
         {#each accounts as account}
         <option value="{account.account_id}">{account.name}</option>
         {/each}
       </select>
     </td>
-    <td class="id">{lines[index].account_id}</td>
-    <td><input bind:value={lines[index].debit} type="text"></td>
-    <td><input bind:value={lines[index].credit} type="text"></td>
-    <td><button on:click={upLine}>Up</button></td>
-    <td><button on:click={downLine}>Down</button></td>
-    <td><button on:click={removeLine}>Remove</button></td>
+
+    <td class="id">{line.account_id}</td>
+
+    <td><input bind:value={line.debit} type="text"></td>
+    <td><input bind:value={line.credit} type="text"></td>
+
+    <td><button name="{String(index)}" on:click={upLine}>Up</button></td>
+    <td><button name="{String(index)}" on:click={downLine}>Down</button></td>
+    <td><button name="{String(index)}" on:click={removeLine}>Remove</button></td>
+
   </tr>
   {/each}
 </table>
 
 <style>
+
   .id {
     padding: var(--padding);
   }
