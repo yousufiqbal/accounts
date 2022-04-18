@@ -6,6 +6,7 @@
   import Field from "$lib/components/Field.svelte";
   import Flex from "$lib/components/Flex.svelte";
   import Grid from "$lib/components/Grid.svelte";
+import Select from "$lib/components/Select.svelte";
   import Title from "$lib/components/Title.svelte";
   import { accountSchema, extractYupErrors } from "$lib/database/schema";
   import { axios } from "$lib/others/utils";
@@ -14,6 +15,8 @@
   onMount(() => {
     if ($page.params.mode == 'add') el.focus()
   })
+
+  const categories = ['bills', 'banks', 'capitals', 'parties', 'expenses']
 
   export let account = {}
   let touched = false, errors = {}
@@ -70,6 +73,7 @@
 
 <Grid>
   <Field bind:el {touched} bind:value={account.name} label="Account Name" name="name" error={errors['name']} />
+  <Select name="category" bind:value={account.category} label="Category" error={errors['category']} items={categories} />
 </Grid>
 
 <Flex>

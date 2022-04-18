@@ -1,17 +1,24 @@
 import { knex } from '$lib/database/knex'
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export const get = async ({ url }) => {
+export const get = async () => {
 
-  const page = +url.searchParams.get('page') || 1
-  const limit = +url.searchParams.get('limit') || 15
-
-  const { totalRows } = await knex('accounts').count({ totalRows: 'account_id'}).first()
-  const accounts = await knex('accounts').limit(limit).offset((page - 1) * limit)
+  const accounts = await knex('accounts')
     .orderBy('created', 'desc')
 
+  let data = []
+
+  const categories = [...new Set(accounts.map(account => account.category))].sort()
+
+  for (const category of categories) {
+    data.push({
+      category,
+      accounts: accounts.filter(account => account.category == category)
+    })
+  }
+
   return {
-    body: { totalRows, accounts }
+    body: { accounts: data }
   }
 
 }

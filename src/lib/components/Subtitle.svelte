@@ -12,5 +12,6 @@
     font-weight: bold;
     font-size: 1.2rem;
     margin-bottom: 20px;
+    text-transform: capitalize;
   }
 </style>

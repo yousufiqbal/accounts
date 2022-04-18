@@ -8,11 +8,12 @@
   import Lines from "$lib/components/Lines.svelte";
   import Title from "$lib/components/Title.svelte";
   import { extractYupErrors, transactionSchema } from "$lib/database/schema";
+import { axios } from "$lib/others/utils";
   import dayjs from "dayjs";
 
   export let accounts = []
   
-  export let transaction = { datetime: dayjs().format('DD MMM, YYYY - HH:mm') }
+  export let transaction = { datetime: dayjs().format('YYYY-MM-DD HH:mm') }
   let touched = false, errors = {}
 
   $: console.log(errors)
@@ -27,7 +28,12 @@
   }
 
   const addTransaction = async () => {
-    alert('Adding..')
+    try {
+      const response = await axios.post('/api/transactions', transaction)
+      alert(response.data.message)
+    } catch (error) {
+      alert(error.data.message)
+    }
   }
   const editTransaction = async () => {}
 
