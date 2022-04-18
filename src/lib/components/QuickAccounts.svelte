@@ -14,6 +14,10 @@
     if (e.key == 'Escape') {
       input.blur()
     }
+    if (e.ctrlKey && e.keyCode == '75') {
+      e.preventDefault()
+      input.focus()
+    } 
   }
 
   const handleInput = e => {
@@ -97,7 +101,7 @@
 
   <div class="search" style="display: flex">
     <Icon on:click={()=>input.focus()} icon="plane" size="1.3rem" />
-    <input bind:value={keyword} on:keyup={search} on:keyup={handleInput} bind:this={input} on:focus={()=>show=true} on:blur={()=>show=false} placeholder="Quick Browse">
+    <input bind:value={keyword} on:keyup={search} on:keyup={handleInput} bind:this={input} on:focus={()=>show=true} on:blur={()=>show=false} placeholder="Quick Accounts (Ctrl + K)">
   </div>
 
   {#if show}
@@ -115,7 +119,7 @@
 
 </div>
 
-<svelte:window on:keyup={handleShortcut} />
+<svelte:window on:keydown={handleShortcut} />
 
 <style>
   .quick-browse {
