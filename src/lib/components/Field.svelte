@@ -15,8 +15,9 @@
 
 <style>
   .field {
-    display: grid;
     /* outline: 1px solid red; */
+    display: grid;
+    align-content: start;
     max-width: 400px;
   }
   label {
@@ -37,6 +38,7 @@
     text-transform: capitalize;
   }
   input {
+    align-self: start;
     padding: 13px 17px 7px 15px;
     border: var(--border);
   }
