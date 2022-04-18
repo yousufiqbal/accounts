@@ -80,7 +80,7 @@
 <div class="quick-browse">
 
   <div class="search" style="display: flex">
-    <Icon icon="plane" size="1.3rem" />
+    <Icon on:click={()=>input.focus()} icon="plane" size="1.3rem" />
     <input on:keyup={handleInput} bind:this={input} on:focus={()=>show=true} on:blur={()=>show=false} placeholder="Quick Browse">
   </div>
 
