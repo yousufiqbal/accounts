@@ -1,6 +1,8 @@
 <script>
+import Actions from "$lib/components/Actions.svelte";
+
   import Pagination from "$lib/components/Pagination.svelte";
-  import QuickBrowse from "$lib/components/QuickBrowse.svelte";
+  import QuickAccounts from "$lib/components/QuickAccounts.svelte";
   import Accounts from "$lib/tables/Accounts.svelte";
   import Button from "../../lib/components/Button.svelte";
   import Flex from "../../lib/components/Flex.svelte";
@@ -11,13 +13,17 @@
 
 <Title title="Accounts" />
 
-<Flex>
-  <Button icon="add" href="/accounts/add-account" type="primary" name="Add Account" />
-  <!-- <Button icon="search" name="Search" href="/accounts/search" /> -->
-  <QuickBrowse />
-  <!-- <Filter {original} bind:results={accounts} /> -->
-</Flex>
+<Actions>
+
+  <svelte:fragment slot="left">
+    <Button icon="add" href="/accounts/add-account" type="primary" name="Add Account" />
+    <QuickAccounts />
+  </svelte:fragment>
+  
+  <svelte:fragment slot="right">
+    <Pagination {totalRows} />
+  </svelte:fragment>
+
+</Actions>
 
 <Accounts {accounts} />
-
-<Pagination {totalRows} />

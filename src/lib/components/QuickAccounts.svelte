@@ -119,6 +119,7 @@
 
 <style>
   .quick-browse {
+    min-width: 400px;
     display: grid;
     position: relative;
   }
