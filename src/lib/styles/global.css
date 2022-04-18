@@ -50,6 +50,10 @@ a {
   column-gap: 10px;
 }
 
+.active {
+  color: red;
+}
+
 /* Clarity */
 
 body {

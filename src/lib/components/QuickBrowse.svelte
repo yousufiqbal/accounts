@@ -4,10 +4,75 @@
 
   export let show = false
   let input
+  let suggestions
 
   const handleShortcut = e => {
     if (e.key == 'Escape') {
       input.blur()
+    }
+  }
+
+  const handleInput = e => {
+    
+    if (e.key == 'Enter') {
+      const active = suggestions.querySelector('.active')
+      if (active) active.click()
+    }
+
+    if (e.key == 'ArrowDown') {
+
+      // check for active suggestion
+      const active = suggestions.querySelector('.active')
+
+      // if no.. select first suggestion
+      if (!active) {
+        const first = suggestions.firstElementChild
+        first.classList.add('active')
+        return
+      }
+
+      // if yes.. check for next sibling
+      const next = active.nextElementSibling
+
+      // if no.. select first suggestion.. removing current active..
+      if (!next) {
+        active.classList.remove('active')
+        const first = suggestions.firstElementChild
+        first.classList.add('active')
+        return
+      }
+
+      // if yes.. select next suggestion.. removing current active..
+      active.classList.remove('active')
+      next.classList.add('active')
+    }
+
+    if (e.key == 'ArrowUp') {
+
+      // check for active suggestion
+      const active = suggestions.querySelector('.active')
+
+      // if no.. select last suggestion
+      if (!active) {
+        const last = suggestions.lastElementChild
+        last.classList.add('active')
+        return
+      }
+
+      // if yes.. check for previous sibling
+      const previous = active.previousElementSibling
+
+      // if no.. select last suggestion.. removing current active..
+      if (!previous) {
+        active.classList.remove('active')
+        const last = suggestions.lastElementChild
+        last.classList.add('active')
+        return
+      }
+
+      // if yes.. select previous suggestion.. removing current active..
+      active.classList.remove('active')
+      previous.classList.add('active')
     }
   }
 </script>
@@ -16,13 +81,13 @@
 
   <div class="search" style="display: flex">
     <Icon icon="plane" size="1.3rem" />
-    <input bind:this={input} on:focus={()=>show=true} on:blur={()=>show=false} placeholder="Quick Browse">
+    <input on:keyup={handleInput} bind:this={input} on:focus={()=>show=true} on:blur={()=>show=false} placeholder="Quick Browse">
   </div>
 
   {#if show}
   <div transition:slide|local={{duration: 100}} class="status-suggestions">
     <div class="status">Status</div>
-    <div class="suggestions">
+    <div bind:this={suggestions} class="suggestions">
       <a href="/accounts/bank-al-habib">Bank Al Habib</a>
       <a href="/accounts/habib-metro">Habib Metro</a>
       <a href="/accounts/bank-al-habib">Bank Al Habib</a>
@@ -80,4 +145,5 @@
   a:hover {
     color: red;
   }
+
 </style>
