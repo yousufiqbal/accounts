@@ -1,24 +1,20 @@
 import { knex } from '$lib/database/knex'
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export const get = async () => {
+export const get = async ({url}) => {
+
+  const category = url.searchParams.get('category') || 'all'
 
   const accounts = await knex('accounts')
     .orderBy('created', 'desc')
-
-  let data = []
-
-  const categories = [...new Set(accounts.map(account => account.category))].sort()
-
-  for (const category of categories) {
-    data.push({
-      category,
-      accounts: accounts.filter(account => account.category == category)
+    .modify(qb => {
+      if (category != 'all') qb.where({ category }) 
     })
-  }
+
+  const categories = (await knex('accounts').distinct('category')).map(account => account.category)
 
   return {
-    body: { accounts: data }
+    body: { accounts, categories }
   }
 
 }
