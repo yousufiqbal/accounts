@@ -1,8 +1,7 @@
 <script>
   import Button from "./Button.svelte";
   import Flex from "./Flex.svelte";
-import Icon from "./Icon.svelte";
-import Validation from "./Validation.svelte";
+  import Validation from "./Validation.svelte";
 
   export let accounts = []
 
@@ -17,12 +16,22 @@ import Validation from "./Validation.svelte";
   const upLine = () => {}
   const downLine = () => {}
   const removeLine = () => {}
+
+  /** @param {Array} lines */
+  const checkUniqueAccounts = lines => {
+    const ids = lines.filter(line => line.account_id).map(line => line.account_id)
+    if (ids.length <= 1) return false
+    return new Set(ids).size == ids.length
+  }
+
+  $: uniqueAccounts = checkUniqueAccounts(lines)
+  $: totalDebit = lines.map(line => line.debit).reduce((a, b) => +a + +b, 0)
+  $: totalCredit = lines.map(line => line.credit).reduce((a, b) => +a + +b, 0)
+  $: balancedAmounts = totalDebit && totalCredit && totalDebit == totalCredit
 </script>
 
 <Flex>
   <Button on:click={addLine} name="Add Line" icon="add" />
-  <Validation text="Balanced Amounts" valid={true} />
-  <Validation text="Unique Accounts" valid={true} />
 </Flex>
 
 <table class="lines">
@@ -60,6 +69,11 @@ import Validation from "./Validation.svelte";
   </tr>
   {/each}
 </table>
+
+<Flex>
+  <Validation text="Balanced Amounts" valid={balancedAmounts} />
+  <Validation text="Unique Accounts" valid={uniqueAccounts} />
+</Flex>
 
 <style>
 

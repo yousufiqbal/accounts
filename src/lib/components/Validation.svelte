@@ -1,17 +1,12 @@
 <script>
   import Icon from "$lib/components/Icon.svelte";
-  import { fly } from 'svelte/transition'
   
   export let valid = false
   export let text
 </script>
 
 <div class="validation">
-  {#key valid}
-  <i in:fly={{x: -20, duration: 100}} >
-    <Icon icon={valid ? 'check' : 'discard' } fill={valid ? 'green' : 'red'} size="1.3rem" />
-  </i>
-  {/key}
+  <Icon icon={valid ? 'check' : 'discard' } fill={valid ? 'green' : 'red'} size="1.3rem" />
   <span>{text}</span>
 </div>
 
