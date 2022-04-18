@@ -102,7 +102,9 @@
 
   {#if show}
   <div transition:slide|local={{duration: 100}} class="status-suggestions">
+    {#if keyword}
     <div class="status">Found {results.length} results</div>
+    {/if}
     <div bind:this={suggestions} class="suggestions">
       {#each results as account}
       <a href="/accounts/{kebabCase(account.name)}?account_id={account.account_id}">{account.name}</a>
