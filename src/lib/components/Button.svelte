@@ -2,7 +2,7 @@
   import Icon from "./Icon.svelte"
 
   export let name, href = null
-  /** @type {'general'|'primary'} */
+  /** @type {'general'|'primary'|'info'} */
   export let type = 'general'
   export let submit = false
   export let icon = null
@@ -41,5 +41,9 @@
   .primary {
     background-color: var(--primary);
     color: white;
+  }
+  .info {
+    background-color: rgb(255, 213, 76);
+    /* color: white; */
   }
 </style>

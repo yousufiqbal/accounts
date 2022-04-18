@@ -35,7 +35,7 @@
 </script>
 
 <Flex>
-  <Button on:click={addLine} name="Add Line" icon="add" />
+  <Button type="info" on:click={addLine} name="Add Line" icon="add" />
 </Flex>
 
 <table class="lines">
