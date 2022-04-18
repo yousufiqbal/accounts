@@ -12,9 +12,9 @@
 
 <style>
   .actions {
+    /* outline: 1px solid red; */
     display: flex;
     justify-content: space-between;
-    outline: 1px solid red;
     margin-bottom: 20px;
   }
   .section {

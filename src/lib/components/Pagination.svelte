@@ -3,7 +3,7 @@
   import { getOtherQueryParams } from '$lib/others/utils';
 
   export let totalRows = 0
-  export let limit = 14
+  export let limit = 15
   export let otherParams = false
   
   $: page = +$pg.url.searchParams.get('page') || 1
