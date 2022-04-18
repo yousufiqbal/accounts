@@ -18,7 +18,7 @@
 <style>
   .tabs {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     border-left: var(--border);
   }
   a {
