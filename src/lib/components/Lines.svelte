@@ -2,20 +2,24 @@
   import Button from "./Button.svelte";
   import Flex from "./Flex.svelte";
   import Validation from "./Validation.svelte";
-
+  
+  const line = { credit: 0, debit: 0, account_id: '' }
   export let accounts = []
+  export let lines = [{...line}]
 
   const addLine = () => {
     lines.push({...line})
     lines = lines
   }
 
-  const line = { credit: 0, debit: 0, account_id: '' }
-  let lines = [{...line}]
-
   const upLine = () => {}
   const downLine = () => {}
-  const removeLine = () => {}
+
+  const removeLine = e => {
+    if (lines.length <= 1) return;
+    lines.splice(+e.currentTarget.name, 1)
+    lines = lines
+  }
 
   /** @param {Array} lines */
   const checkUniqueAccounts = lines => {
@@ -48,8 +52,8 @@
 
     <td>{index+1}</td>
 
-    <td>
-      <select bind:value={line.account_id} name="" id="">
+    <td >
+      <select bind:value={line.account_id} name="accounts" id="accounts">
         <option value="" selected disabled hidden>Choose Account</option>
         {#each accounts as account}
         <option value="{account.account_id}">{account.name}</option>
@@ -59,8 +63,8 @@
 
     <td class="id">{line.account_id}</td>
 
-    <td><input bind:value={line.debit} type="text"></td>
-    <td><input bind:value={line.credit} type="text"></td>
+    <td><input bind:value={line.debit} size="12" type="text"></td>
+    <td><input bind:value={line.credit} size="12" type="text"></td>
 
     <td><button name="{String(index)}" on:click={upLine}>Up</button></td>
     <td><button name="{String(index)}" on:click={downLine}>Down</button></td>
@@ -105,6 +109,9 @@
   input, select {
     border: none;
     padding: var(--padding)
+  }
+  select {
+    min-width: 200px;
   }
   td:first-child {
     padding: var(--padding);

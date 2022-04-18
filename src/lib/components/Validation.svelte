@@ -11,9 +11,6 @@
 </div>
 
 <style>
-  i {
-    display: flex;
-  }
   .validation {
     display: flex;
     gap: 10px;

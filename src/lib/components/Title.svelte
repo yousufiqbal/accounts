@@ -30,6 +30,9 @@
     display: flex;
     /* color: blue; */
   }
+  button:hover {
+    color: blue;
+  }
   .title {
     display: flex;
     align-items: center;

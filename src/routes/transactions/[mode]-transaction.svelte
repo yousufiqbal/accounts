@@ -7,18 +7,45 @@
   import Grid from "$lib/components/Grid.svelte";
   import Lines from "$lib/components/Lines.svelte";
   import Title from "$lib/components/Title.svelte";
+  import { extractYupErrors, transactionSchema } from "$lib/database/schema";
   import dayjs from "dayjs";
 
   export let accounts = []
+  
+  export let transaction = { datetime: dayjs().format('DD MMM, YYYY - HH:mm') }
+  let touched = false, errors = {}
+
+  $: console.log(errors)
+
+  const submit = async () => {
+    if (await transactionSchema.isValid(transaction)) {
+      if ($page.params.mode == 'add') await addTransaction()
+      if ($page.params.mode == 'edit') await editTransaction()
+    } else {
+      touched = true
+    }
+  }
+
+  const addTransaction = async () => {
+    alert('Adding..')
+  }
+  const editTransaction = async () => {}
 
   const crumbs = [
     { name: 'Transactions', href: '/transactions' },
     { name: $page.params.mode + ' Transaction', href: '/transactions/' + $page.params.mode + '-transaction' }
   ]
 
-  export let transaction = {
-    datetime: dayjs().format('DD MMM, YYYY - HH:mm')
+  const validate = async () => {
+    try {
+      await transactionSchema.validate(transaction, { abortEarly: false })
+      errors = {}
+    } catch (error) {
+      errors = extractYupErrors(error)
+    }
   }
+
+  $: transaction && validate()
 </script>
 
 <Breadcrumb {crumbs} />
@@ -26,13 +53,13 @@
 <Title back title="Add Transaction" />
 
 <Grid columns="1fr 2fr"  >
-  <Field bind:value={transaction.datetime} label="Datetime" name="datetime" />
-  <Field bind:value={transaction.narration} label="Narration" name="datetime" />
+  <Field {touched} bind:value={transaction.datetime} label="Datetime" name="datetime" error={errors['datetime']} />
+  <Field {touched} bind:value={transaction.narration} label="Narration" name="narration" error={errors['narration']} />
 </Grid>
 
-<Lines {accounts} />
+<Lines bind:lines={transaction.lines} {accounts} />
 
 <Flex>
-  <Button name="Save" type="primary" icon="save" />
+  <Button on:click={submit} name="Save" type="primary" icon="save" />
   <Button name="Discard" icon="discard" />
 </Flex> 

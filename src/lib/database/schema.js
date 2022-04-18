@@ -19,7 +19,18 @@ export const extractYupErrors = err => {
   }, {});
 }
 
-// Example..
+// Account
 export const accountSchema = yup.object({
   name: yup.string().trim().min(2).max(200).required().ne(),
+}).noUnknown(true)
+
+// Transaction
+export const transactionSchema = yup.object({
+  datetime: yup.string().trim().min(2).max(200).required().ne(),
+  narration: yup.string().trim().min(2).max(200).required().ne(),
+  lines: yup.array().of(yup.object({
+    account_id: yup.string().required(),
+    debit: yup.string().required(),
+    credit: yup.string().required(),
+  }))
 }).noUnknown(true)
