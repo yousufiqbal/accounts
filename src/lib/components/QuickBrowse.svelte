@@ -1,10 +1,14 @@
 <script>
   import Icon from "./Icon.svelte";
   import { slide } from 'svelte/transition'
+  import { kebabCase } from "lodash-es";
+  import { axios } from "$lib/others/utils";
 
   export let show = false
-  let input
+  let input, keyword = ''
   let suggestions
+
+  let results = []
 
   const handleShortcut = e => {
     if (e.key == 'Escape') {
@@ -75,23 +79,34 @@
       previous.classList.add('active')
     }
   }
+
+  const search = async () => {
+    // validate
+    if (!keyword) {
+      results = []
+      return
+    }
+
+    // search
+    const response = await axios.get('/api/accounts/suggest?keyword=' + keyword)
+    results = response.data
+  }
 </script>
 
 <div class="quick-browse">
 
   <div class="search" style="display: flex">
     <Icon on:click={()=>input.focus()} icon="plane" size="1.3rem" />
-    <input on:keyup={handleInput} bind:this={input} on:focus={()=>show=true} on:blur={()=>show=false} placeholder="Quick Browse">
+    <input bind:value={keyword} on:keyup={search} on:keyup={handleInput} bind:this={input} on:focus={()=>show=true} on:blur={()=>show=false} placeholder="Quick Browse">
   </div>
 
   {#if show}
   <div transition:slide|local={{duration: 100}} class="status-suggestions">
-    <div class="status">Status</div>
+    <div class="status">Found {results.length} results</div>
     <div bind:this={suggestions} class="suggestions">
-      <a href="/accounts/bank-al-habib">Bank Al Habib</a>
-      <a href="/accounts/habib-metro">Habib Metro</a>
-      <a href="/accounts/bank-al-habib">Bank Al Habib</a>
-      <a href="/accounts/habib-metro">Habib Metro</a>
+      {#each results as account}
+      <a href="/accounts/{kebabCase(account.name)}?account_id={account.account_id}">{account.name}</a>
+      {/each}
     </div>
   </div>
   {/if}
