@@ -21,58 +21,74 @@ USE `accounts`;
 CREATE TABLE IF NOT EXISTS `accounts` (
   `account_id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
+  `category` varchar(200) DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`account_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`account_id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table accounts.accounts: ~0 rows (approximately)
+-- Dumping data for table accounts.accounts: ~42 rows (approximately)
 /*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
-INSERT INTO `accounts` (`account_id`, `name`, `created`) VALUES
-	(1, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(2, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(3, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(4, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(5, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(6, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(7, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(8, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(9, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(10, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(11, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(12, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(13, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(14, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(15, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(16, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(17, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(18, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(19, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(20, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(21, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(22, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(23, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(24, 'Sajid Iqbal', '2022-04-17 12:59:50'),
-	(25, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(26, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(27, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(28, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(29, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(30, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(31, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(32, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(33, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(34, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(35, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(36, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(37, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(38, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(39, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(40, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(41, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(42, 'Bank Al Habib', '2022-04-17 12:57:53'),
-	(43, 'Habib Metro', '2022-04-17 15:41:52'),
-	(44, 'Pedro Bhai 2', '2022-04-17 15:54:38');
+INSERT INTO `accounts` (`account_id`, `name`, `category`, `created`) VALUES
+	(1, 'Bank Al Habib', 'banks', '2022-04-17 12:57:53'),
+	(43, 'Habib Metro', 'banks', '2022-04-17 15:41:52'),
+	(44, 'Saleem Ahmed', 'parties', '2022-04-17 15:54:38'),
+	(45, 'Yousuf Capital', 'capitals', '2022-04-18 23:32:51'),
+	(46, 'Cash in Hand', 'banks', '2022-04-18 23:33:00'),
+	(47, 'Electricity Expense', 'bills', '2022-04-18 23:33:21'),
+	(48, 'Telephones Expenses', 'bills', '2022-04-18 23:33:33'),
+	(49, 'Naseem Alam', 'parties', '2022-04-18 23:34:25'),
+	(50, 'Shoiab Wali', 'parties', '2022-04-18 23:34:32'),
+	(51, 'UBL Bank', 'banks', '2022-04-19 00:01:14'),
+	(52, 'Water Expenses', 'bills', '2022-04-19 00:30:53'),
+	(53, 'Salaries', 'expenses', '2022-04-19 00:42:09');
 /*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
+
+-- Dumping structure for table accounts.coa
+CREATE TABLE IF NOT EXISTS `coa` (
+  `coa_id` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`coa_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table accounts.coa: ~0 rows (approximately)
+/*!40000 ALTER TABLE `coa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `coa` ENABLE KEYS */;
+
+-- Dumping structure for table accounts.lines
+CREATE TABLE IF NOT EXISTS `lines` (
+  `line_id` int NOT NULL AUTO_INCREMENT,
+  `transaction_id` int NOT NULL,
+  `account_id` int NOT NULL,
+  `debit` decimal(20,2) NOT NULL DEFAULT '0.00',
+  `credit` decimal(20,2) NOT NULL DEFAULT '0.00',
+  PRIMARY KEY (`line_id`),
+  KEY `FK_lines_transactions` (`transaction_id`),
+  KEY `FK_lines_accounts` (`account_id`),
+  CONSTRAINT `FK_lines_accounts` FOREIGN KEY (`account_id`) REFERENCES `accounts` (`account_id`),
+  CONSTRAINT `FK_lines_transactions` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`transaction_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table accounts.lines: ~0 rows (approximately)
+/*!40000 ALTER TABLE `lines` DISABLE KEYS */;
+INSERT INTO `lines` (`line_id`, `transaction_id`, `account_id`, `debit`, `credit`) VALUES
+	(1, 1, 44, 250.00, 0.00),
+	(2, 1, 43, 0.00, 250.00);
+/*!40000 ALTER TABLE `lines` ENABLE KEYS */;
+
+-- Dumping structure for table accounts.transactions
+CREATE TABLE IF NOT EXISTS `transactions` (
+  `transaction_id` int NOT NULL AUTO_INCREMENT,
+  `narration` varchar(100) NOT NULL,
+  `datetime` datetime NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`transaction_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table accounts.transactions: ~0 rows (approximately)
+/*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
+INSERT INTO `transactions` (`transaction_id`, `narration`, `datetime`, `created`) VALUES
+	(1, 'asdf', '2022-04-18 23:06:00', '2022-04-18 23:07:11');
+/*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
