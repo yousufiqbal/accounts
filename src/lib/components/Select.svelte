@@ -3,7 +3,7 @@
   export let touched = false, error = 'An error occured.'
   export let el = null
   export let items = []
-  // export let objs = []
+  export let idColumn = null, valueColumn= null
 </script>
 
 {#if items.length != 0}
@@ -14,7 +14,11 @@
   <select bind:this={el} on:blur={()=>touched=true} bind:value {name} {id}>
     <option value="" selected disabled hidden>Choose One</option>
     {#each items as item}
-    <option value="{item}">{item}</option>
+      {#if idColumn}
+      <option value="{item[idColumn]}">{item[valueColumn]}</option>
+      {:else}
+      <option value="{item}">{item}</option>
+      {/if}
     {/each}
   </select>
   
@@ -29,7 +33,7 @@
   .field {
     /* outline: 1px solid red; */
     display: grid;
-    align-content: start;
+    align-content: end;
     max-width: 400px;
   }
   label {

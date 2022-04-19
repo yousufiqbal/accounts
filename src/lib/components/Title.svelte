@@ -35,7 +35,7 @@
   }
   .title {
     display: flex;
-    align-items: center;
+    align-items: start;
     gap: 8px;
     margin-bottom: 20px;
   }
