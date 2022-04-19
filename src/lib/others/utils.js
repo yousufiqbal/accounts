@@ -41,3 +41,5 @@ export const capitalize = sentence => {
   }
   return words.join(" ");
 }
+
+export const sumIt = (a, b) => +a + +b
