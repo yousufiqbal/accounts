@@ -1,4 +1,9 @@
 <script>
+  const Links = [
+    { name: '', href: '' }
+  ]
+
+  /** @type {Links} */
   export let links = []
 </script>
 

@@ -18,7 +18,7 @@ import DatePicker from "$lib/components/DatePicker.svelte";
   export let trialBalances = []
 </script>
 
-<DatePicker />
+<DatePicker start="2021-07-01" end="2022-06-30" />
 
 {#if trialBalances.length != 0}
 <Table>

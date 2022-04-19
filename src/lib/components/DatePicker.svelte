@@ -7,8 +7,8 @@ import { goto } from "$app/navigation";
   const format = 'YYYY-MM-DD'
   const today = dayjs().format(format)
 
-  let start = $page.url.searchParams.get('start') || dayjs().format('YYYY-MM-DD')
-  let end = $page.url.searchParams.get('end') || dayjs().format('YYYY-MM-DD')
+  export let start = $page.url.searchParams.get('start') || dayjs().format('YYYY-07-01')
+  export let end = $page.url.searchParams.get('end') || dayjs().format('YYYY-06-30')
 
   const fire = () => {
     goto($page.url.pathname + '?start=' + start + '&end=' + end)
@@ -41,7 +41,7 @@ import { goto } from "$app/navigation";
 
 <div class="date-picker">
   <input max={today} on:change={fire} type="date" bind:value={start}>
-  <input min={start} max={today} on:change={fire} type="date" bind:value={end}>
+  <input min={start} on:change={fire} type="date" bind:value={end}>
   <button on:click={setToday}>Today</button>
   <button on:click={setThisWeek}>This Week</button>
   <button on:click={setThisMonth}>This Month</button>
