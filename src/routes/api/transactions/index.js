@@ -17,3 +17,23 @@ export const post = async ({request}) => {
   }
 
 }
+
+/** @type {import('@sveltejs/kit').RequestHandler} */
+export const put = async ({request, url}) => {
+
+  const transaction_id = url.searchParams.get('transaction_id')
+  console.log(transaction_id)
+
+  try {
+    // TODO do following inside transaction..
+    const body = await request.json()
+    const { narration, datetime, lines } = await transactionSchema.validate(body)
+    await knex('transactions').update({ narration, datetime }).where( { transaction_id })
+    await knex('lines').delete().where({ transaction_id })
+    await knex('lines').insert(lines.map(line => ({ ...line, transaction_id })))
+    return { body: { message: 'Transaction edited '}}
+  } catch (error) {
+    return internalError(error)
+  }
+
+}

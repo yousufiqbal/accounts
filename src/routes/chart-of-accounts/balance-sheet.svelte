@@ -51,7 +51,7 @@
     })
     alert(response.data.message)
     await invalidate('/chart-of-accounts/balance-sheet')
-    current.liability_account_id = ''
+    current.capital_account_id = ''
   }
   
   const removeAccount = async e => {

@@ -12,7 +12,7 @@
 
 <Flex>
   <Button name="Add Transaction" href="/transactions/add-transaction" type="primary" icon="add" />  
-  <Button name="Search" icon="search" />  
+  <Button name="Search" icon="search" href="/transactions/search" />  
   <Pagination {totalRows} />
 </Flex>
 

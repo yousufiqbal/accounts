@@ -8,15 +8,13 @@
   import Lines from "$lib/components/Lines.svelte";
   import Title from "$lib/components/Title.svelte";
   import { extractYupErrors, transactionSchema } from "$lib/database/schema";
-import { axios } from "$lib/others/utils";
+  import { axios } from "$lib/others/utils";
   import dayjs from "dayjs";
 
   export let accounts = []
   
   export let transaction = { datetime: dayjs().format('YYYY-MM-DD HH:mm') }
   let touched = false, errors = {}
-
-  $: console.log(errors)
 
   const submit = async () => {
     if (await transactionSchema.isValid(transaction)) {
@@ -35,7 +33,15 @@ import { axios } from "$lib/others/utils";
       alert(error.data.message)
     }
   }
-  const editTransaction = async () => {}
+
+  const editTransaction = async () => {
+    try {
+      const response = await axios.put('/api/transactions?transaction_id=' + $page.url.searchParams.get('transaction_id'), transaction)
+      alert(response.data.message)
+    } catch (error) {
+      alert(error.data.message)
+    }
+  }
 
   const crumbs = [
     { name: 'Transactions', href: '/transactions' },
@@ -56,7 +62,7 @@ import { axios } from "$lib/others/utils";
 
 <Breadcrumb {crumbs} />
 
-<Title back title="Add Transaction" />
+<Title back title="{$page.params.mode} Transaction" />
 
 <Grid columns="1fr 2fr"  >
   <Field {touched} bind:value={transaction.datetime} label="Datetime" name="datetime" error={errors['datetime']} />
