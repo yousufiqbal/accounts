@@ -6,7 +6,7 @@
   import Field from "$lib/components/Field.svelte";
   import Flex from "$lib/components/Flex.svelte";
   import Grid from "$lib/components/Grid.svelte";
-import Select from "$lib/components/Select.svelte";
+  import Select from "$lib/components/Select.svelte";
   import Title from "$lib/components/Title.svelte";
   import { accountSchema, extractYupErrors } from "$lib/database/schema";
   import { axios } from "$lib/others/utils";
@@ -16,7 +16,7 @@ import Select from "$lib/components/Select.svelte";
     if ($page.params.mode == 'add') el.focus()
   })
 
-  const categories = ['bills', 'banks', 'capitals', 'parties', 'expenses']
+  const categories = ['bills', 'banks', 'capitals', 'parties', 'expenses', 'properties', 'sales', 'purchases', 'cash']
 
   export let account = {}
   let touched = false, errors = {}

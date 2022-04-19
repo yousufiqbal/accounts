@@ -22,7 +22,7 @@ export const extractYupErrors = err => {
 // Account
 export const accountSchema = yup.object({
   name: yup.string().trim().min(2).max(200).required().ne(),
-  category: yup.string().oneOf(['bills', 'banks', 'capitals', 'parties', 'expenses']),
+  category: yup.string().oneOf(['bills', 'banks', 'capitals', 'parties', 'expenses', 'properties', 'sales', 'purchases', 'cash']),
 }).noUnknown(true)
 
 // Transaction
