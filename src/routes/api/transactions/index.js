@@ -6,6 +6,7 @@ import { internalError } from '$lib/others/utils'
 export const post = async ({request}) => {
 
   try {
+    // TODO do following inside transaction..
     const body = await request.json()
     const { narration, datetime, lines } = await transactionSchema.validate(body)
     const transaction_id = await knex('transactions').insert({ narration, datetime })
