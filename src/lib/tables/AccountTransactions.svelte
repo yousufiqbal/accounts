@@ -3,7 +3,7 @@
   import Table from "$lib/components/Table.svelte";
   import { beautifyDateTime } from "$lib/others/utils";
 
-  let Transactions = [
+  const AccountTransactions = [
     {
       transaction_id: 3,
       narration: 'Bought Cultus VXR 1000 CC',     
@@ -13,7 +13,7 @@
     }
   ]
 
-  /** @type {Transactions} */
+  /** @type {AccountTransactions} */
   export let transactions = []
 </script>
 
@@ -39,6 +39,12 @@
     <td><a href="/transactions/edit-transaction?transaction_id={transaction.transaction_id}">Edit</a></td>
   </tr>
   {/each}
+  <!-- <tr>
+    <td colspan="3"></td>
+    <td class="total">{transactions.map(transaction => transaction.debit).reduce((a, b) => +a + +b, 0).toFixed(2)}</td>
+    <td class="total">{transactions.map(transaction => transaction.credit).reduce((a, b) => +a + +b, 0).toFixed(2)}</td>
+    <td colspan="2"></td>
+  </tr> -->
 </Table>
 
 {:else}

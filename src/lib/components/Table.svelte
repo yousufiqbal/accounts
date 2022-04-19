@@ -27,4 +27,8 @@
   .table a:hover {
     color: red;
   }
+  .table  .total {
+    font-weight: bold;
+    text-align: right;
+  }
 </style>

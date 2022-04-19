@@ -4,6 +4,18 @@
   import { beautifyDateTime } from "$lib/others/utils";
   import { capitalize, kebabCase } from 'lodash-es'
 
+  const Accounts = [
+    {
+      account_id: 1,
+      name: 'Bank Al Habib',
+      category: 'banks',
+      debit: '0.00',
+      credit: '0.00',
+      created: ''
+    }
+  ]
+
+  /** @type {Accounts} */
   export let accounts = []
 </script>
 
@@ -13,7 +25,7 @@
     <th>({accounts.length})</th>
     <th>ID</th>
     <th class="main">Account Name</th>
-    <th>Category</th>
+    <!-- <th>Category</th> -->
     <th>Debit</th>
     <th>Credit</th>
     <th>Created</th>
@@ -24,9 +36,9 @@
     <td>{index + 1}</td>
     <td>{account.account_id}</td>
     <td><a href="/accounts/{kebabCase(account.name)}?account_id={account.account_id}">{account.name}</a></td>
-    <td>{capitalize(account.category)}</td>
-    <td>2000</td>
-    <td>45000</td>
+    <!-- <td>{capitalize(account.category)}</td> -->
+    <td style="min-width: 150px">{account.debit || '0.00'}</td>
+    <td style="min-width: 150px">{account.credit || '0.00'}</td>
     <td>{beautifyDateTime(account.created)}</td>
     <td><a href="/accounts/edit-account?account_id={account.account_id}">Edit</a></td>
   </tr>

@@ -11,8 +11,6 @@ export const get = async ({ url }) => {
   const transactions = await knex('transactions').limit(limit).offset((page - 1) * limit)
     .orderBy('created', 'desc')
 
-    console.log(transactions)
-
   return {
     body: { totalRows, transactions }
   }
