@@ -36,6 +36,8 @@
 
 <Flex>
   <Button type="info" on:click={addLine} name="Add Line" icon="add" />
+  <Validation text="Balanced Amounts" valid={balancedAmounts} />
+  <Validation text="Unique Accounts" valid={uniqueAccounts} />
 </Flex>
 
 <table class="lines">
@@ -74,10 +76,6 @@
   {/each}
 </table>
 
-<Flex>
-  <Validation text="Balanced Amounts" valid={balancedAmounts} />
-  <Validation text="Unique Accounts" valid={uniqueAccounts} />
-</Flex>
 
 <style>
 
